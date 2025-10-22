@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohan Tripathy's Portfolio</title>
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Apply Inter font and deep dark background globally */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Tailwind slate-900 */
+        }
+        /* Custom scrollbar for a dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e293b; /* slate-800 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #475569; /* slate-600 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b; /* slate-500 */
+        }
+    </style>
+</head>
+<body class="text-gray-100 min-h-screen">
+
+    <div class="max-w-4xl mx-auto px-4 py-8 md:py-16">
+
+        <!-- HEADER & SOCIAL LINKS -->
+        <header class="mb-12">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-2">
+                Rohan Tripathy
+            </h1>
+            
+            <p class="text-xl md:text-2xl font-light text-cyan-400 mb-8" th:text="${title}" />
+
+            <!-- CONNECTION LINKS -->
+            <nav class="flex flex-wrap gap-3 md:gap-4">
+                <a href="#projects" class="group flex items-center px-4 py-2 text-sm font-medium rounded-full bg-slate-800 hover:bg-slate-700 transition duration-300 shadow-lg text-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-cyan-400 group-hover:text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20a5 5 0 0 0-5-5h-2a5 5 0 0 0-5 5"/><path d="M12 10a5 5 0 1 0 0-10 5 5 0 0 0 0 10z"/></svg>
+                    Projects
+                </a>
+                <a href="https://github.com/RulerOfHells" target="_blank" class="group flex items-center px-4 py-2 text-sm font-medium rounded-full bg-slate-800 hover:bg-slate-700 transition duration-300 shadow-lg text-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-cyan-400 group-hover:text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 3c.69 1.52.69 2.95 0 4.47l.01.01V12h-.01c0 3.8-2.69 5.86-5.46 6.63.15.2.24.45.24.7v2.24"/></svg>
+                    GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/rohan-tripathy-031a31248/" target="_blank" class="group flex items-center px-4 py-2 text-sm font-medium rounded-full bg-slate-800 hover:bg-slate-700 transition duration-300 shadow-lg text-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-cyan-400 group-hover:text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                    LinkedIn
+                </a>
+                <a href="resume" class="group flex items-center px-4 py-2 text-sm font-medium rounded-full bg-cyan-600 hover:bg-cyan-500 transition duration-300 shadow-lg text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 15h2"/><path d="M16 15h-2"/><path d="M8 18h8"/></svg>
+                    View Resume
+                </a>
+            </nav>
+        </header>
+
+        <!-- ABOUT SECTION - Stylized and Minimalist -->
+        <section id="about" class="mb-16">
+            <h2 class="text-3xl font-bold border-b border-cyan-400 pb-2 mb-6">About Me</h2>
+            <div class="bg-slate-800 p-6 rounded-xl shadow-xl border border-slate-700">
+                <p class="text-lg leading-relaxed text-gray-300">
+                    I thrive on building scalable and efficient solutions. My focus is on **clean architecture** and **user-centric design**. Currently exploring distributed systems and performance optimization.
+                </p>
+                <div class="mt-4 text-cyan-400 font-semibold">
+                    <span class="inline-block px-3 py-1 text-sm bg-slate-700 rounded-full mr-2">#Scalable</span>
+                    <span class="inline-block px-3 py-1 text-sm bg-slate-700 rounded-full mr-2">#Efficient</span>
+                    <span class="inline-block px-3 py-1 text-sm bg-slate-700 rounded-full">#MinimalistCode</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAIN CONTENT GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+
+            <!-- WORK EXPERIENCE -->
+            <section id="work" class="md:col-span-1">
+                <h2 class="text-2xl font-bold border-b border-gray-600 pb-2 mb-6">Work Experience</h2>
+                <div class="space-y-6">
+                    <!-- Job 1 -->
+                    <div class="bg-slate-800 p-5 rounded-lg shadow-md border border-slate-700 hover:border-cyan-400 transition duration-300">
+                        <h3 class="text-xl font-semibold text-cyan-400">Senior Software Engineer</h3>
+                        <p class="text-sm text-gray-400 italic mb-3">Acme Solutions | 2022 - Present</p>
+                        <ul class="list-disc list-inside text-gray-300 ml-4 space-y-1">
+                            <li>Led feature development for core product platform.</li>
+                            <li>Optimized database queries, reducing latency by 40%.</li>
+                            <li>Mentored junior team members on best practices.</li>
+                        </ul>
+                    </div>
+                    <!-- Job 2 -->
+                    <div class="bg-slate-800 p-5 rounded-lg shadow-md border border-slate-700 hover:border-cyan-400 transition duration-300">
+                        <h3 class="text-xl font-semibold text-cyan-400">Backend Developer</h3>
+                        <p class="text-sm text-gray-400 italic mb-3">Innovatech Startup | 2020 - 2022</p>
+                        <ul class="list-disc list-inside text-gray-300 ml-4 space-y-1">
+                            <li>Developed and maintained RESTful APIs.</li>
+                            <li>Integrated third-party payment systems.</li>
+                            <li>Contributed to infrastructure-as-code setup.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TECH STACK (SKILLS) -->
+            <section id="skills" class="md:col-span-1">
+                <h2 class="text-2xl font-bold border-b border-gray-600 pb-2 mb-6">Tech Stack (Skills)</h2>
+                <div class="space-y-6">
+                    <!-- Category 1 -->
+                    <div class="bg-slate-800 p-5 rounded-lg shadow-md border border-slate-700">
+                        <h3 class="text-xl font-semibold text-cyan-400 mb-3">Languages & Frameworks</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 text-sm bg-indigo-500 rounded-full">JavaScript/TypeScript</span>
+                            <span class="px-3 py-1 text-sm bg-indigo-500 rounded-full">React & Next.js</span>
+                            <span class="px-3 py-1 text-sm bg-indigo-500 rounded-full">Python (Django)</span>
+                            <span class="px-3 py-1 text-sm bg-indigo-500 rounded-full">Go</span>
+                        </div>
+                    </div>
+                    <!-- Category 2 -->
+                    <div class="bg-slate-800 p-5 rounded-lg shadow-md border border-slate-700">
+                        <h3 class="text-xl font-semibold text-cyan-400 mb-3">Databases & DevOps</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 text-sm bg-teal-500 rounded-full">PostgreSQL</span>
+                            <span class="px-3 py-1 text-sm bg-teal-500 rounded-full">Redis</span>
+                            <span class="px-3 py-1 text-sm bg-teal-500 rounded-full">Docker/Kubernetes</span>
+                            <span class="px-3 py-1 text-sm bg-teal-500 rounded-full">AWS/GCP</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PROJECTS SECTION (Full Width) -->
+        <section id="projects" class="mb-16">
+            <h2 class="text-3xl font-bold border-b border-cyan-400 pb-2 mb-6">Featured Projects</h2>
+            <div class="space-y-6">
+                <!-- Project 1 -->
+                <div class="bg-slate-800 p-6 rounded-xl shadow-xl border border-slate-700 hover:shadow-cyan-400/20 hover:shadow-2xl transition duration-500">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Decentralized Voting System</h3>
+                    <p class="text-gray-400 mb-4">A proof-of-concept application using blockchain technology for secure and transparent elections.</p>
+                    <ul class="flex flex-wrap gap-2 text-sm font-medium">
+                        <li class="px-3 py-1 rounded-full bg-slate-700 text-cyan-300">Solidity</li>
+                        <li class="px-3 py-1 rounded-full bg-slate-700 text-cyan-300">Truffle</li>
+                        <li class="px-3 py-1 rounded-full bg-slate-700 text-cyan-300">React</li>
+                    </ul>
+                    <a href="#" target="_blank" class="mt-4 inline-block text-cyan-400 hover:text-cyan-300 font-medium transition">
+                        View Project →
+                    </a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-slate-800 p-6 rounded-xl shadow-xl border border-slate-700 hover:shadow-cyan-400/20 hover:shadow-2xl transition duration-500">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Real-time Data Dashboard</h3>
+                    <p class="text-gray-400 mb-4">A high-performance dashboard capable of handling thousands of concurrent data streams using websockets.</p>
+                    <ul class="flex flex-wrap gap-2 text-sm font-medium">
+                        <li class="px-3 py-1 rounded-full bg-slate-700 text-cyan-300">Go</li>
+                        <li class="px-3 py-1 rounded-full bg-slate-700 text-cyan-300">PostgreSQL</li>
+                        <li class="px-3 py-1 rounded-full bg-slate-700 text-cyan-300">D3.js</li>
+                    </ul>
+                    <a href="#" target="_blank" class="mt-4 inline-block text-cyan-400 hover:text-cyan-300 font-medium transition">
+                        View Code →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="text-center text-sm text-gray-500 pt-8 border-t border-slate-800">
+            &copy; 2025 Rohan Tripathy. Designed with Minimalism.
+        </footer>
+    </div>
+
+</body>
+</html>
