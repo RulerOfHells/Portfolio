@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -33,6 +35,14 @@ public class DispatcherServletConfig implements WebMvcConfigurer {
         // IMPORTANT: The order matters! Add it early to ensure it takes precedence
         // over default converters (like the JSON converter) for your specific type.
     }
+	
+	@Bean
+	public MessageSource messageSource() {
+		var ms = new ReloadableResourceBundleMessageSource();
+		ms.setBasename("classpath:messages");
+		ms.setDefaultEncoding("UTF-8");
+		return ms;
+	}
 	
 	@Bean
 	public ThymeleafViewResolver viewResolver() {
@@ -69,6 +79,7 @@ public class DispatcherServletConfig implements WebMvcConfigurer {
 	    // across different data types, so this flag is "false" by default
 	    // for safer backwards compatibility.
 	    templateEngine.setEnableSpringELCompiler(true);
+	    templateEngine.setMessageSource(messageSource());
 	    return templateEngine;
 	}
 }
