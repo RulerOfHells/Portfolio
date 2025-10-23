@@ -30,12 +30,17 @@ FROM tomcat:10.1-jre17-temurin-focal
 ENV CATALINA_HOME /usr/local/tomcat
 
 # Remove the default Tomcat webapps (The default "ROOT" application)
-RUN rm -rf $CATALINA_HOME/webapps/ROOT/
+RUN rm -rf $CATALINA_HOME/webapps/*
 
 # Copy the built WAR file from the build stage into Tomcat's webapps directory.
 # We rename it to ROOT.war so Tomcat serves the application from the root path ("/")
 COPY --from=build /app/target/Portfolio.war $CATALINA_HOME/webapps/ROOT.war
 
+COPY entrypoint.sh /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 # Tomcat runs on port 8080 by default
 EXPOSE 8080
 
