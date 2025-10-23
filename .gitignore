@@ -14,7 +14,7 @@ target/
 .springBeans
 .sts4-cache
 env.properties
-
+mvnw*
 ### IntelliJ IDEA ###
 .idea
 *.iws
