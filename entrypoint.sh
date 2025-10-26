@@ -10,5 +10,8 @@ if [ -n "$PORT" ]; then
     echo "Tomcat connector configured to listen on port $PORT."
 fi
 
+export JAVA_OPTS="$JAVA_OPTS -Dfile.encoding=UTF-8 -Dsun.jnu.encoding=UTF-8"
+echo "Java opts for UTF-8 is set : $JAVA_OPTS"
+
 echo "Starting Tomcat..."
 exec $CATALINA_HOME/bin/catalina.sh run
