@@ -8,6 +8,10 @@ if [ -n "$PORT" ]; then
     sed -i "s/port=\"8080\"/port=\"$PORT\"/" $CATALINA_HOME/conf/server.xml
     
     echo "Tomcat connector configured to listen on port $PORT."
+    
+    sed -i 's/\(<Connector .*\)port=/\1 URIEncoding="UTF-8" port=/' $CATALINA_HOME/conf/server.xml
+    
+    echo "Tomcat connector configured with UTF-8 URI encoding"
 fi
 
 export JAVA_OPTS="$JAVA_OPTS -Dfile.encoding=UTF-8 -Dsun.jnu.encoding=UTF-8"
