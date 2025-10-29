@@ -48,6 +48,7 @@ public class DispatcherServletConfig implements WebMvcConfigurer {
 	public ThymeleafViewResolver viewResolver() {
 		var thymeleafVr =  new ThymeleafViewResolver();
 		thymeleafVr.setTemplateEngine(templateEngine());
+		thymeleafVr.setCharacterEncoding("UTF-8");
 		return thymeleafVr;
 	}
 	
@@ -64,6 +65,7 @@ public class DispatcherServletConfig implements WebMvcConfigurer {
 	    // Template cache is true by default. Set to false if you want
 	    // templates to be automatically updated when modified.
 	    templateResolver.setCacheable(true);
+	    templateResolver.setCharacterEncoding("UTF-8");
 	    return templateResolver;
 	}
 
