@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
@@ -29,12 +30,13 @@ public class DispatcherServletConfig implements WebMvcConfigurer {
 	
 	@Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-        // Add your custom converter to the list
         converters.add(new FileToPdfConverter());
-
-        // IMPORTANT: The order matters! Add it early to ensure it takes precedence
-        // over default converters (like the JSON converter) for your specific type.
-    }
+	}
+	
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/**").addResourceLocations("classpath:/");
+	}
 	
 	@Bean
 	public MessageSource messageSource() {

@@ -1,5 +1,7 @@
 package dev.rohan.portfolio.initializer;
 
+import java.util.logging.Logger;
+
 import org.jspecify.annotations.Nullable;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -9,6 +11,8 @@ import jakarta.servlet.Filter;
 
 public class DispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
+	Logger logs = Logger.getLogger("logs.txt");
+	
 	@Override
 	protected Class<?> @Nullable [] getRootConfigClasses() {
 		return null;
@@ -19,7 +23,7 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
 		var filter = new CharacterEncodingFilter();
 		filter.setEncoding("UTF-8");
 		filter.setForceEncoding(true);
-		System.out.println("here");
+		logs.info("UTF-8 enforced from servlet filters");
 		return new Filter[] {filter};
 	}
 
@@ -31,7 +35,7 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
 
 	@Override
 	protected String[] getServletMappings() {
-		System.out.println("It is working");
+		logs.info("Dispatcher Servlet mapped");
 		return new String[] {"/"};
 	}
 
