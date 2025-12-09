@@ -3,6 +3,7 @@ package dev.rohan.portfolio.converter;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import org.jspecify.annotations.NonNull;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.MediaType;
@@ -20,13 +21,13 @@ public class FileToPdfConverter extends AbstractHttpMessageConverter<FileFormat>
 	}
 	
 	@Override
-	protected boolean supports(Class<?> clazz) {
+	protected boolean supports(@NonNull Class<?> clazz) {
 		return FileFormat.class.isAssignableFrom(clazz);
 	}
 
 	@Override
-	protected FileFormat readInternal(Class<? extends FileFormat> clazz, HttpInputMessage inputMessage)
-			throws IOException, HttpMessageNotReadableException, UnsupportedOperationException {
+	protected FileFormat readInternal(@NonNull Class<? extends FileFormat> clazz, @NonNull HttpInputMessage inputMessage)
+			throws HttpMessageNotReadableException, UnsupportedOperationException {
 		throw new UnsupportedOperationException("Reading not supported");
 	}
 

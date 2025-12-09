@@ -4,7 +4,7 @@ import java.io.File;
 
 public class FileFormat {
 	private final File file;
-	private String mimeType;
+	private final String mimeType;
 	
 	public FileFormat(File file, String mimeType) {
 		this.file = file;
