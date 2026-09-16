@@ -34,9 +34,9 @@ public class FileToPdfConverter extends AbstractHttpMessageConverter<FileFormat>
 	@Override
 	protected void writeInternal(FileFormat t, HttpOutputMessage outputMessage)
 			throws IOException, HttpMessageNotWritableException {
-		outputMessage.getHeaders().setContentType(MediaType.parseMediaType(t.getMimeType()));
-		outputMessage.getHeaders().set("Content-Disposition", "inline; filename=\"" + t.getFile().getName() + "\"");
-		FileCopyUtils.copy(new FileInputStream(t.getFile()), outputMessage.getBody());
+		outputMessage.getHeaders().setContentType(MediaType.parseMediaType(t.mimeType()));
+		outputMessage.getHeaders().set("Content-Disposition", "inline; filename=\"" + t.file().getName() + "\"");
+		FileCopyUtils.copy(new FileInputStream(t.file()), outputMessage.getBody());
 	}
 
 }

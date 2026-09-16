@@ -1,7 +1,5 @@
 package dev.rohan.portfolio.config;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
@@ -9,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.HttpMessageConverters;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -27,12 +25,12 @@ public class DispatcherServletConfig implements WebMvcConfigurer {
 
 	@Autowired
 	ApplicationContext applicationContext;
-	
+
 	@Override
-    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.add(new FileToPdfConverter());
+	public void configureMessageConverters(HttpMessageConverters.ServerBuilder builder) {
+		builder.customMessageConverter(new FileToPdfConverter());
 	}
-	
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/**").addResourceLocations("classpath:/");

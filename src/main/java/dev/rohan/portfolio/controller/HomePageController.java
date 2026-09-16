@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.CacheControl;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,10 +43,14 @@ public class HomePageController {
 	
 	@GetMapping(value = "/resume", produces = "application/pdf")
 	@ResponseBody
-	public FileFormat printResume() throws IOException {
+	public ResponseEntity<FileFormat> printResume() throws IOException {
 		var resumePdf = new ClassPathResource("Rohan_s_HackerResume.pdf").getFile();
 		
-		return new FileFormat(resumePdf, "application/pdf");
+		return ResponseEntity.ok()
+				.cacheControl(CacheControl.noStore().mustRevalidate())
+				.header("Pragma", "no-cache")
+				.header("Expires", "0")
+				.body(new FileFormat(resumePdf, "application/pdf"));
 	}
 	
 }
